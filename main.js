@@ -7,6 +7,11 @@ let fim = false;
 const quadrados = document.querySelectorAll('.quadrado')
 const modalInfo = document.querySelector('.vencedor')
 const modal = document.querySelector('.back-modal')
+const fechar = document.getElementById('fechar')
+
+fechar.addEventListener('click', ()=>{
+    modal.classList.remove('ativo')
+})
 
 quadrados.forEach(quadrado => {
     quadrado.addEventListener('click', inserirIcone)
@@ -23,8 +28,9 @@ function inserirIcone(e) {
         
         if(vezDoJogador == 0){
             modalInfo.innerText = 'O'
+        } else{
+            modalInfo.innerText = 'X'
         }
-        modalInfo.innerText = 'X'
     }
     inserirSimbolo()
 }
