@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 7px;
+}
+
+/* #o,
+#x {
+    font-size: 50px;
+    transition: .3s;
+} */
+
+.quadrado {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(114, 104, 104);
+}
+
+.o::after {
+    content: 'O';
+    font-size: 40px;
+}
+
+.x::after {
+    content: 'X';
+    font-size: 40px;
+}
+
+.back-modal.ativo {
+    background-color: rgba(0, 0, 0, 0.589);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-modal.ativo .modal {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: blue;
+}
+
+.back-modal.ativo span{
+    display: block;
+}
+
+span {
+    display: none;
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+i{
+    align-self: flex-end;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.vencedor {
+    font-size: 50px;
+    text-transform: uppercase;
+}
