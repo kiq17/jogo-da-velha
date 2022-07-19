@@ -1,17 +1,29 @@
-const tabuleiro = ['', '', '', '', '', '', '', '', ''];
+let tabuleiro = ['', '', '', '', '', '', '', '', ''];
 let vezDoJogador = 0
 const simbolos = ['o', 'x'];
 let fim = false;
-
 
 const quadrados = document.querySelectorAll('.quadrado')
 const modalInfo = document.querySelector('.vencedor')
 const modal = document.querySelector('.back-modal')
 const fechar = document.getElementById('fechar')
 
-fechar.addEventListener('click', ()=>{
+fechar.addEventListener('click', () => {
     modal.classList.remove('ativo')
+
+    /* reinicio do jogo */
+
+    const p = document.querySelectorAll('p')
+
+    p.forEach(p => {
+        p.remove()
+    })
+
+    tabuleiro = ['', '', '', '', '', '', '', '', ''];
+
+    fim = false
 })
+
 
 quadrados.forEach(quadrado => {
     quadrado.addEventListener('click', inserirIcone)
@@ -22,13 +34,13 @@ function inserirIcone(e) {
     let id = quadrado.id
 
     if (movimento(id)) {
-        setTimeout(()=>{
+        setTimeout(() => {
             modal.classList.add('ativo')
-        },300)
-        
-        if(vezDoJogador == 0){
+        }, 300)
+
+        if (vezDoJogador == 0) {
             modalInfo.innerText = 'O'
-        } else{
+        } else {
             modalInfo.innerText = 'X'
         }
     }
@@ -56,7 +68,7 @@ function movimento(posicao) {
         }
     }
 
-    return fim
+    return fim;
 
 }
 
@@ -97,5 +109,21 @@ function ganhador() {
         }
     }
 
+    /* verificando se todos os icones estão preenchidos */
+    const icones = document.querySelectorAll('p')
+    if (icones.length == 8) {
+        velha()
+    }
+
     return false;
+
+}
+
+function velha() {
+    modal.classList.add('ativo')
+
+    const spanText = document.querySelector('.modal span')
+
+    spanText.textContent = 'Deu Velha'
+    modalInfo.textContent = ':('
 }
